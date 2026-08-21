@@ -1,0 +1,1514 @@
+Bash Shell Scripting:
+
+What is a Shell:
+Is an Intepreter
+
+A shell is a program that provides a command-line interface to an operating system
+Linux and Unix-like operating systems provide different shells to the users. 
+Bash (Bourne Again Shell), csh (C Shell), ksh (Korn Shell), and sh (Bourne Shell) are the most common ones.
+
+Shell:
+user.sh 
+user.sc 
+user
+
+command:
+ssh-keygen
+
+Private 
+Public
+Your identification has been saved in /home/ec2-user/.ssh/id_ed25519
+Your public key has been saved in /home/ec2-user/.ssh/id_ed25519.pub
+
+Bash Shell Scripting:
+Lines of linux command or instructions put in a file.
+
+pwd
+date
+whoami
+echo Welcome to Acada
+uname
+cal
+
+How to Execute a Shell Script: 
+sh <filename>
+bash <filename> 
+./<filename>
+
+sh script.sh
+
+What is the difference between ./<filename> and sh <fileName> or bash file1.sh:
+
+./file1.sh
+The interpreter determination: the OS read the scripts shebang line to determine which interpreter to use. 
+To use this you will have to elivate your privilege
+you will add x to the file permission
+chmod +x file1.sh
+
+sh file.sh 
+Explicit interpretation: The script is explicitly passed as an argument to the interpreter (sh)
+
+Shebang: 
+
+#!/bin/bash or #!/bin/sh or #!/bin/ksh
+
+The shebang is the combination of the # (pound key) and ! (exclamation mark).
+This character combination has a special meaning when it is used in the very 
+first line of the script. It is used to specify the interpreter with which the 
+
+Note: Shabang should start the script. 
+
+#!/bin/bash
+pwd
+date
+whoami
+echo Welcome to Acada
+uname
+cal
+
+to Give executable permission across all :
+chmod +x file1.sh 
+Give it at the user level:
+chmod u+x file1.sh 
+remove the executable permission: 
+chmod -x file1.sh 
+
+
+Package Management: 
+
+#!/bin/bash
+
+echo Installing Package on Linux Server!
+sudo yum install nano -y
+sudo yum install git -y 
+sudo yum install ksh -y
+
+#sudo yum install nano git ksh -y
+
+#!/bin/bash
+mkdir excellent1
+touch ehi.db 
+ls
+cd excellent1
+
+How to Debugging a shell script: 
+
+1. vi into the file or script to find and fix the error
+2. Set Debugging mode (set -x and +x)
+3. redirect the error or standard error to a file
+
+#!/bin/bash 
+pwd 
+whoami 
+echo Welcome to DevOps Masterclass
+set -x
+uname 
+cal 
+Date 
+pwD 
+pwd 
+set +x
+echo This is Class 2026 c2 
+Date 
+
+#!/bin/bash 
+echo welcome to class 
+pwd 
+mkdir test -v 
+mkdir -v test2 
+touch file20 
+echo All created 
+ls
+
+Comments:
+Comments hashes or ignore a specific or multiple lines so that those lines will not be executed.
+
+
+Single line Comments:
+This means adding a comment character, typically a "#", also known as the Hash or Pound character, 
+to the beginning of the line, so that it's read as a comment rather than a piece of code. 
+This means that everything in the line that comes after the comment character will be ignored.
+
+#!/bin/bash
+#Release: July 2026
+#Version: 2.5.9
+#auther: Efe Joveluro
+echo welcome to class 
+pwd 
+#After pwd the next command will make directory
+#mkdir test -v 
+#mkdir -v test2 
+rm -rf file20 
+touch file20 
+echo All created 
+ls
+
+
+Multi-line Comment: 
+<<justice
+
+
+
+justice
+
+
+#!/bin/bash
+<<jj
+Release: July 2026
+Version: 2.5.9
+auther: Efe Joveluro
+jj
+echo welcome to class 
+pwd 
+#After pwd the next command will make directory
+<<ww
+mkdir test -v 
+mkdir -v test2 
+rm -rf file20 
+touch file20 
+echo All created 
+ls
+ww
+
+Comments: it explains what the script is about to achieve It explains the code better
+
+Scripting OR Automation Languages: 
+1. Python
+2. C# 
+3. Go and Go Lang 
+4. Groovy 
+5. Ruby 
+6. Typescript 
+7. Javascript
+etc 
+
+Software Development Life Cycle (SDLC)
+
+Variables: 
+Is a character or string we assign a value to.
+Key Value pairs
+
+
+Types of Variables:
+1. System Defined variable 
+2. User Defined Variables
+  - Static 
+  - Dynamic
+
+System Defined Variables: 
+These variables are predefined by the system (OS)
+
+
+name=EfeJoveluro
+class=DevOps Masterclass
+user=Excellent
+
+How to call a variable: 
+Use $ sign in front of the key to call the value
+
+echo $SHELL
+echo $HOSTNAME
+echo $USER
+echo $PWD
+
+echo $user
+
+echo $PATH
+
+to get system Environment variables: 
+env
+
+SSH_CONNECTION=68.146.199.36 60888 172.31.26.55 22
+XDG_SESSION_CLASS=user
+SELINUX_ROLE_REQUESTED=
+TERM=xterm-256color
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+USER=ec2-user
+SELINUX_USE_CURRENT_RANGE=
+SHLVL=1
+XDG_SESSION_ID=1
+
+
+How to modify System Defined Variables: 
+1. Can be modified on the specific user level 
+
+vi .bashrc 
+export HISTSIZE=20
+save and exit
+source .bashrc
+
+2. All users: 
+  sudo vi /etc/profile
+  export HISTSIZE=20
+  save and exit
+  source /etc/profile
+
+
+USER DEFINED VARIABLE: 
+Static Varaibles: They are predefined variables by the user
+
+#!/bin/bash
+echo begining of script
+name=efe
+school=acadalearning
+class=2026c2
+location=online
+
+echo $name
+echo $class
+echo $location
+echo $school
+
+echo my name is $name and I'm in $school $class
+echo we take our course $location
+
+echo my name is ${name} and I am in ${school} ${class}
+echo we take our course ${location}
+
+#!/bin/bash
+bank=acada
+pin=admin123
+name=justice
+school=acadalearning
+
+echo Welcome to ${bank} My name is ${name}
+echo your pin is ${pin} 
+echo Hello ${name} you are in ${school}
+mkdir -v ${bank}
+mkdir -v $bank
+touch ${bank}.sh
+ls
+
+#!/bin/bash
+SCHOOL="ACADA Learning"
+HOME_DIR=$HOME/efe
+
+echo This is ${SCHOOL}
+echo you need to fill out the form below
+echo what is your name 
+mkdir -v ${HOME_DIR}/testJD
+touch ${HOME_DIR}done.py
+tail ${HOME_DIR}
+
+
+Dynamic Variables: 
+They are defined by the input user at the point of use.
+
+BANK="ACADA BANK"
+SCHOOL="ACADA Learning"
+HOME_DIR=$HOME/efe
+
+echo "Welcome to ${BANK}"
+echo Please enter your pin 
+read PIN
+echo Please enter your name
+read NAME 
+echo Hello ${NAME} your pin is ${PIN}, welcome to ${SCHOOL}
+echo sign in successfull
+
+
+SCHOOL="ACADA Learning"
+HOME_DIR=/home/ec2-user
+
+echo This is ${SCHOOL}
+echo You need to fill out the form below. 
+echo Enter your First Name 
+read NAME1
+echo Enter your lastname 
+read NAME2 
+echo Please enter your password 
+read PASSWORD
+echo Enter your date of birth 
+read DOB 
+echo Hi ${NAME1} ${NAME2} your password is ${PASSWORD}
+echo Your date of birth is ${DOB}
+echo You are welcome to ${SCHOOL}
+mkdir ${HOME_DIR}/efe -v 
+mkdir ${HOME_DIR}/${NAME1} -v
+
+
+SCHOOL="ACADA Learning DevOps i'm john Abu"
+SCHOOL="ACADA I'm Learning"
+SCHOOL="ACADA Learning"
+
+echo "my name is ${name} and I'm in ${school} ${class}"
+echo "my name is ${name} and I'm in ${school} ${class}"
+echo "my name is ${name} and I'm in ${school} ${class}"
+
+
+PASSWORD_PATH=/etc/passwd
+SCHOOL=ACADALearning
+NAME=Justice
+DATE_OF_BIRTH=2025-11-05
+echo Welcome to ${SCHOOL}
+echo enter your username
+read USERNAME
+sudo userdel zenith
+echo Enter your Password
+read -s PASSWORD
+sudo adduser ${USERNAME}
+sudo passwd ${USERNAME}
+tail -2 ${PASSWORD_PATH}
+tail -2 /etc/passwd
+
+
+PASSWORD_PATH=/etc/passwd
+SCHOOL=ACADALearning
+NAME=Justice
+DATE_OF_BIRTH=2025-11-05
+
+echo Welcome to ${SCHOOL}
+echo enter your username
+read USERNAME
+echo Enter your Password
+read -s PASSWORD
+
+if id ${USERNAME} >/dev/null 2>&1
+then
+    echo User already exists
+else
+    sudo adduser ${USERNAME}
+    echo "${USERNAME}:${PASSWORD}" | sudo chpasswd
+fi
+
+tail -2 ${PASSWORD_PATH}
+tail -2 /etc/passwd
+
+======
+This will also work without the if cmd
+#!/bin/bash
+ 
+PASSWORD_PATH=/etc/passwd
+SCHOOL=ACADALearning
+NAME=Justice
+DATE_OF_BIRTH=2025-11-05
+ 
+echo "Welcome to ${SCHOOL}"
+ 
+echo "Enter your username:"
+read USERNAME
+ 
+echo "Enter your password:"
+read -s PASSWORD
+echo
+ 
+sudo useradd "${USERNAME}"
+ 
+echo "${USERNAME}:${PASSWORD}" | sudo chpasswd
+ 
+tail -2 "${PASSWORD_PATH}"
+
+PASSWORD_CHECK=/etc/shadow
+PASSWORD_PATH=/etc/passwd
+SCHOOL=AcadaLearning
+NAME=Efe
+DATE_OF_BIRTH=2026.08.01
+
+echo Welcome to ${SCHOOL}
+echo enter your Username 
+read USERNAME 
+echo Enter your Password 
+read -s PASSWORD
+sudo adduser ${USERNAME}
+echo $PASSWORD | sudo passwd ${USERNAME} --stdin
+tail -2 ${PASSWORD_PATH}
+sudo tail -2 ${PASSWORD_CHECK}
+echo ${SCHOOL} ${NAME} ${DATE_OF_BIRTH}
+echo Script success
+
+
+COMMAND LINE ARGUMENTS: 
+echo $0: Scriptname
+echo $1: First Argument
+echo $2: second argument
+echo $7: Seventh argument
+echo $#: Number of argument
+echo $*: Displays all the arguments
+echo $@: Displays all the arguments
+echo $?: Status of the last run command
+         If $? = 0: This means the last run command was success
+         If $? = ! = 127: This means the last run command was NOT Successful (It has error)
+
+sh user.sh  install  enable    efe
+    $0         $1      $2      $3
+
+
+pwd 
+echo $0
+echo $1
+echo $2 
+echo $4
+Date
+echo $?
+echo $@
+
+Arithemtic_Operations: 
+expr 2 + 2 = 
+expr 3 - 1
+expr 6 / 2
+expr 5 \* 5
+
+echo what is 6 + 3 = `expr 6 + 3`
+echo what is 6 - 4 = `expr 6 - 4`
+echo what is 6 / 2 = `expr 6 / 2`
+echo what is 6 x 3 = `expr 6 \* 3`
+
+Stand input (stdin), Standard Output (stdout), Standard Error (stderr):
+
+Standard Input (stdin): Input stream from the keyboard or file
+Standard Output (stdout: Normal output (results, messages)
+Standard Error (stderr): Error Messages
+
+
+1. Standard Input (stdin): < or 0< or --stdin
+The source of input to your program or command
+By default, it’s your keyboard
+Can be redirected from a file or piped from another command
+
+2. stdout (Standard Output): 1> or >
+This is where normal output of a program goes
+By default, it’s printed to your terminal screen
+
+3. stderr (Standard Error): 2>
+Used for error messages
+Separating errors from regular output allows better debugging and logging
+
+
+pwd
+date
+Cal
+whoami
+uname
+
+
+Standard Output: 
+sh stt.sh 1>stout.txt
+
+standard error: 
+sh stt.sh 2>sterr.txt
+
+Both Standard and Standard output: 
+sh stt.sh 1>log.txt 2>log2.txt
+
+Combine both the standard output and standard error into the same file: 
+sh stt.sh >log3.txt 2>&1
+
+OR 
+
+sh stt.sh > log3.txt 2>&1
+
+
+STATEMENT="Please enter your name"
+NAME1=efejoveluroacadalearning
+NAME2="efe joveluro"
+school='acada learning'
+echo Welcome to Acada Bank 
+echo ${STATEMENT} 
+read NAME 
+echo Enter your First installment payment
+read NUM1 
+echo ${STATEMENT} 
+echo enter your Second installment payment 
+read NUM2 
+echo Welcome to Acada Bank 
+echo ${STATEMENT} 
+echo enter your Third installment payment 
+read NUM3
+echo Helllo ${NAME} the balance is `expr ${NUM1} + ${NUM2} + ${NUM3} - 3500`
+echo ${NAME1} ${NAME2} ${school}
+echo Welcome to Acada Bank 
+echo ${STATEMENT} 
+
+
+echo "Creating a new user in Linux"
+read -p "Please enter your name : " NAME
+echo "Your name is ${NAME}"
+echo Enter your second Name
+read NAME2
+echo Hello ${NAME} ${NAME2}, welcome to Acada Learning
+
+read -p "What is your name:" NAME
+read -p "Enter your Pin : " -s PIN 
+echo "Hello ${NAME} your pin is ${PIN}"
+
+
+echo "Creating a new user in Linux"
+echo -n "Enter your name : "
+read NAME
+echo "Enter your password" 
+read -s PASSWD
+echo Your name and Password is ${NAME} and ${PASSWD}
+echo Thanks for subscribing
+
+
+Justice     1
+Excellent
+Ehi         1 1 1   Class Manager 2026 C2
+Oluyemi
+Abubakar    1
+
+CONDITIONS:
+In Bash shell scripting, conditions are used to make decisions using if, elif, else, and loop constructs. 
+You can evaluate strings, numbers, files, or even the output of commands.
+
+a=6
+n=efe
+b=5
+
+a==b
+a!=b
+
+-eq           ==        Equal to
+                        [ a -eq b ] or [ a == b ]
+
+-ne           !=        Not Equal to 
+                        [ a -ne b ] or [ a != b ]
+
+-gt           >         Greater than 
+                        [ a -gt b ] or [ a > b ]
+
+-lt           <         Less than 
+                        [ a -lt b ] or [ a < b ]
+
+-ge           >=        greater than or Equal to 
+                        [ a -ge b ] or [ a >= b ]
+
+-le           <=        Less than or Equal to 
+                        [ a -le b ] or [ a <= b ]
+
+if else Statement:
+
+  if [ condition ];
+  then 
+    commands or Statements
+  else
+    command or Statements
+  fi
+
+OR: 
+
+  if [ condition ]; then 
+    commands or Statements
+  else
+    command or Statements
+  fi
+
+#!/bin/bash
+PASSWD=admin123
+
+read -p "Please enter your password : " PASSWORD
+if [ $PASSWORD == $PASSWD ];
+then 
+echo Welcome your password is correct
+else
+echo you entered the wrong password
+echo try again
+fi
+
+============= 
+read -p "Please enter your password : " PASSWD1
+read -p "Please confirm your password : " PASSWD2
+
+if [ $PASSWD1 == $PASSWD2 ]; then
+echo your password is confirmed
+echo login success
+
+else
+echo your login is not valid
+echo you entered the wrong password
+exit
+fi
+
+===============
+echo "Welcome to ACADA Bank"
+echo "Please enter your card details for identification"
+echo "Please slot in your card"
+read -p "Enter your Name : " NAME
+read -p "Enter your pin: " PIN
+if [ ${PIN} == admin123 ];
+then 
+echo Hello ${NAME} Login Success 
+else 
+echo Try again 
+echo Hello ${NAME} transaction terminated
+fi
+
+============================
+echo "Welcome to ACADA Bank"
+echo "Please enter your card details for identification"
+echo "Please slot in your card"
+read -p "Enter your Name : " NAME
+read -p "Enter your pin: " PIN 
+
+if [[ -n "${PIN}" && "${PIN}" -gt 20 ]]
+then
+echo "Hello ${NAME}, Login Success"
+else
+echo "Try again"
+echo "Hello ${NAME}, transaction terminated"
+fi
+
+Validation (-n "$PIN"): This checks that the user didn't just hit Enter without typing anything, 
+which would otherwise cause a "unary operator expected" error.
+
+
+
+echo "Please enter the price of mangoes"
+read PRICE1 
+echo "Please enter the price of Oranges"
+read PRICE2 
+if [ ${PRICE1} == ${PRICE2} ]
+then 
+echo "${PRICE1} is equal to $PRICE2"
+echo Oranges and Mangoes sells for the same price
+else 
+echo Mangoes and Oranges sells for different prices 
+fi
+
+
+elif:
+  read -p "Enter your pin: " PIN1 
+  read -p "Enter your pin: " PIN2 
+  if [ $PIN1 == 123 ];
+  then 
+  echo The statement is true
+  elif  [ $PIN2 == 321 ]; then
+  echo the second statement is true
+  else
+  echo The statement is not true
+  fi
+
+======
+HOME=/home/ec2-user
+FILE="ttt.txt"
+
+if [ -f "${HOME}/${FILE}" ]; then
+echo The file exist
+else
+echo File does not exist
+fi
+
+
+| Operator | Meaning                  |
+| -------- | ------------------------ |
+| `-f`     | regular file exists      |
+| `-d`     | directory exists         |
+| `-e`     | file or directory exists |
+| `-r`     | readable                 |
+| `-w`     | writable                 |
+| `-x`     | executable               |
+
+
+| Operator    | Meaning             |
+| ----------- | ------------------- |
+| `=`         | equal               |
+| `!=`        | not equal           |
+| `-z "$str"` | string is empty     |
+| `-n "$str"` | string is not empty |
+
+
+Assignment:
+1.
+name="dev"
+if [[ "$name" =~ ^dev ]]; then
+  echo "Name starts with 'dev'"
+fi
+
+2. interpret the below code: 
+if ping -c 1 google.com > /dev/null 2>&1; then
+  echo "Internet is up"
+else
+  echo "Internet is down"
+fi
+
+3. Write 5 generation of sub if else statements
+
+4. if grep -q error.txt; then 
+     echo  "Log contains error"
+     else
+     echo "No error in the file"
+
+
+     5. 
+     #!/bin/bash
+     
+     # Loop until a valid numeric PIN is entered
+     while true; do
+         read -sp "Enter your 4-digit PIN: " PIN
+         echo "" # Newline after hidden input
+     
+         # Check if the input consists ONLY of digits (0-9)
+         if [[ "$PIN" =~ ^[0-9]+$ ]]; then
+             # Check if the PIN meets your math requirement
+             if [[ "$PIN" -gt 20 ]]; then
+                 echo "Login Success!"
+                 break # Exit the while loop
+             else
+                 echo "Error: PIN must be greater than 20."
+             fi
+         else
+             echo "Invalid input: Letters and symbols are not allowed. Please enter numbers only."
+         fi
+     done
+
+
+LOOP:
+ b <= 5; b = expr $b+1
+
+ b = 1
+ b = 1 + 1 = 2
+ b = 2 + 1 = 3
+ b = 3 + 1 = 4
+ b = 4 + 1 = 5
+
+=====================
+b <= 5; b = expr $b+2
+
+b = 1
+b = 1 + 2 = 3
+b = 3 + 2 = 5
+
+0 ====== 1 ====== 3 ======= 5
+
+
+Types of Loops: 
+
+For-Loop: 
+
+  for (( Initiate; conditions; Inc/Dec ))
+      do 
+      Commands or Statetments
+      Done
+
+echo "Start of For-Loop"
+for (( a=1; a<=5; a=a+1 ))
+do
+echo $a
+done
+
+
+echo "Start of For-Loop"
+for (( a=1; a<=5; a=a+2 ))
+do
+echo $a
+done
+
+
+#Number of online bankers request. r = request-count
+echo "Request count"
+for (( r=1000; r<=10000; r=r+3000 ))
+do 
+echo $r
+done 
+echo "Request count ends"
+
+===============
+for (( i=98; i<=100; i++ ))
+do 
+echo $i 
+touch BB$i 
+ls
+done 
+echo "End of Loop"
+
+=======================
+read -p "enter your pin : " a
+if [ ${a} == 123 ]; then 
+echo "Start of For-Loop"
+for (( a=2; a<=5; a=a+2 ))
+do 
+echo $a 
+done
+fi
+
+
+for (( i=98; i<=100; i++ ))
+do 
+echo $i 
+touch BB 
+ls
+done 
+echo "End of Loop"
+
+
+if [ 123 > 50 ]; then
+sh file1.sh 
+
+
+for (( i=98; i<=100; i++ ))
+do 
+echo $i
+if [ -e BB ]; then
+echo "Error: BB already exists!"
+exit 1 
+else 
+touch BB
+fi 
+done
+echo "End of loop"
+
+exit 1 = it means kill the script at that point
+
+
+sudo -u <username> bash <<'EOF'
+whoami
+cd /home/<username>
+touch example.py
+EOF
+
+The sudo -u <username> runs everything inside the EOF block as that user.
+After the block ends, the script continues running as ec2-user.
+
+
+sudo -u efe bash <<'EOF'
+whoami
+cd /home/efe
+touch example.py
+EOF
+
+echo "Runing setup as ec2-user"
+sudo -u efe bash -c 
+  echo "Now running as 'whoami': "
+  cd /opt/app
+  ls 
+
+================
+#!/bin/bash
+
+PASSWORD="$1"
+
+if [[ ${#PASSWORD} -lt 8 ]]; then
+  echo "Password must be at least 8 characters long!"
+  exit 1
+fi
+
+if [[ ! "$PASSWORD" =~ [A-Z] ]]; then
+  echo "Password must contain at least one uppercase letter!"
+  exit 1
+fi
+
+if the password does not contain an upper letter then
+
+if [[ ! "$PASSWORD" =~ [0-9] ]]; then
+  echo "Password must contain at least one number!"
+  exit 1
+fi
+
+echo "Password accepted."
+
+
+if [ ! -f  bb.txt ]; then 
+echo files does exists
+
+
+
+if [[ ! "$PASSWORD" =~ [A-Z] ]]; then
+  echo "Password must contain at least one uppercase letter!"
+  exit 1
+fi
+
+if [[ "$PASSWORD" =~ [A-Z] ]]; then
+  echo "Password must contain at least one uppercase letter!"
+  exit 1
+fi
+
+result yes = true
+
+does the password NOT contain a number 
+! = NOT 
+
+
+If PASSWORD=qwerrtyeyrueu
+
+then 
+Password does NOT contains a number
+
+
+
+While Loop: 
+
+  initiate 
+  while [ conditon ]
+  do 
+  command statement
+  done
+
+echo "Start of While Loop"
+i=4
+while [ "$i" -le 10 ]
+do 
+echo "$i" 
+whoami 
+pwd
+uname
+#i=$(( i + 1 ))
+done
+echo "End of while Loop"
+
+
+NUMBER=5
+while true;
+do 
+read -p "Guess the Number : " INPUT
+
+if [ $INPUT -lt $NUMBER ]; then
+echo "the number too low ....."
+continue
+fi 
+
+if [ $INPUT -gt $NUMBER ]; then
+echo "The number too high ...."
+continue
+fi 
+
+if [ $INPUT -eq $NUMBER ]; then
+echo "You are correct"
+echo "Good guess"
+break 
+fi 
+done
+
+=============
+Break:
+#!/bin/bash
+
+for i in {1..5}
+do
+  if [ $i -eq 3 ]; then
+    break
+  fi
+  echo $i
+done
+
+Managing multiple conditions: 
+
+  service httpd start
+  or 
+  systemctl start httpd
+
+
+service httpd start | stop | restart | terminate | status | install | uninstall
+
+
+switch case: 
+
+syntax: 
+
+case $1 in
+options1) 
+command or statement;;
+options2) 
+command or statement;;
+options3) 
+command or statement;;
+options3) 
+command or statement;;
+*)
+command or statement;;
+esac
+
+
+echo Start of switch case 
+case $1 in 
+
+start)
+echo "Starting Sonaqube Server"
+echo "SonaQube Server Started" ;; 
+
+status)
+echo "Checking Sonaqube Status"
+echo "SonaQube Status Checked" ;; 
+
+stop) 
+echo "Stopping SonaQube Server"
+echo "SonaQube Server Stopped" ;;
+
+*) 
+echo "You entered the wrong action"
+echo "the right actions are (start | status | stop)" ;;
+esac
+
+=========== 
+echo "Start of Switch Case"
+case $1 in 
+
+start)
+echo "Starting SonarQube Server"
+echo "SonarQube Server started";;
+
+enable)
+echo "Enabling SonarQube Server"
+echo "SonarQube Server Enabled";;
+
+read)
+echo "Running the read script"
+sh /home/ec2-user/for1.sh;;
+
+*)
+echo "You entered the wrong action"
+echo " The correct actions are (start | enable | read)"
+esac
+
+
+
+FUNCTIONS: 
+Functions in Bash help you group commands into reusable blocks. 
+They make scripts cleaner, reusable, and easier to maintain — 
+something expected from professional DevOps scripts.
+
+
+Basic Functions Syntax: 
+
+1. 
+
+my_function () {
+  echo "Hello ACADA "
+}
+
+2:
+acada_my_function () {
+  echo "Hello Students all is good "
+}
+
+Calling a Function: 
+#!/bin/bash 
+
+greet() {
+    echo "Hello $1"
+}
+
+greet Excellent
+
+================= 
+#!/bin/bash
+add() {
+result=$(( $1 + $2 ))
+echo $result
+}
+
+add 10 50
+
+Retuning a value from fuction: 
+  bash function can return exit codes, not data
+
+check_number() {
+  if [ $1 -gt 10 ]; then 
+  return 0 
+  else
+  return 1
+  fi
+}
+
+check_number 4
+echo $?
+
+Returning Data from a Function: 
+
+get_date() {
+  echo $(date)
+
+}
+  today=$(get_date)
+
+  echo "Today is $today"
+
+============================ 
+Multiple Functions:
+DevOps script using Function: 
+
+  #!/bin/bash 
+
+  check_docker() { 
+    if ! command -v docker &> /dell/null
+    then
+    echo "Docker not installed"
+    exit 1
+    fi
+  }
+
+  build_container() {
+    docker build -t acada .
+  }
+
+  run_container() {
+    docker run -d -p 8080:80 acada
+  }
+
+  check_docker
+  build_container
+  run_container
+  check
+  Like
+
+=============== 
+Local Variables in Functions:
+
+  cal() {
+    local num1=$1
+    local num2=$2
+    echo $(( num1 + num2 ))
+  }
+
+
+cal 100 4
+
+#!/bin/bash
+
+hello() {
+  NAME="Abubakar"
+  echo "${NAME}"
+}
+
+hello
+echo $NAME
+
+=========== 
+hello() {
+  local NAME="Abubakar"
+  echo "${NAME}"
+}
+
+hello
+echo $NAME
+
+
+Note: What Local means is that the variable belongs to this specific Function
+
+
+Call a function using  script agument:
+
+#!/bin/bash 
+
+start() {
+echo "Stating applicatio..."
+}
+
+stop() {
+echo "stopping application..."
+}
+
+status() {
+echo "application is running"
+}
+
+$1
+$2
+$3
+
+=========== 
+Use SWITCH CASE and Functions:
+
+#!/bin/bash
+set -u
+
+SERVICE_NAME="myserver"
+
+start() {
+    echo "Starting $SERVICE_NAME..."
+
+    # Example:
+    # /opt/myserver/bin/start.sh
+
+    echo "$SERVICE_NAME started successfully."
+}
+
+stop() {
+    echo "Stopping $SERVICE_NAME..."
+
+    # Example:
+    # /opt/myserver/bin/stop.sh
+
+    echo "$SERVICE_NAME stopped successfully."
+}
+
+restart() {
+    echo "Restarting $SERVICE_NAME..."
+
+    stop
+    sleep 2
+    start
+}
+
+status() {
+    echo "Checking status of $SERVICE_NAME..."
+
+    # Example:
+    # systemctl status "$SERVICE_NAME"
+}
+
+usage() {
+    echo "Usage: $0 {start|stop|restart|status}"
+    exit 1
+}
+
+case "${1:-}" in
+    start)
+        start
+        ;;
+
+    stop)
+        stop
+        ;;
+
+    restart)
+        restart
+        ;;
+
+    status)
+        status
+        ;;
+    *)
+        usage
+        ;;
+esac
+
+=================================
+main() {
+  case $1 in
+    start) start ;;
+    stop) stop ;;
+    restart) restart ;;
+    *) echo "Invalid command" ;;
+  esac
+}
+
+start() { echo "Start service"; }
+stop() { echo "Stop service"; }
+restart() { echo "Restart service"; }
+
+main "$@"
+
+
+Webserver:
+Apache httpd, often shortened to Apache, is a free and open-source web server that 
+listens to HTTP requests and responds with the appropriate content. 
+Additionally, websites are often hosted with Apache.
+
+
+http = Hybertext Transfer Protocol
+
+https = Hybertext Transfer Protocol Secured
+
+httpd = Hybertext Transfer Protocol Daemon
+
+Listens: Port 80 = http
+         Port 22 = SSH 
+
+sudo yum install httpd
+
+sudo systemctl start httpd
+press "q" to quite
+
+OR
+
+sudo service httpd start 
+press "q" to quite
+
+sudo vi /var/www/html/index.html
+
+100.26.35.244 = acadalearning.com
+
+sudo shutdown 
+sudo shutdown -c 
+sudo reboot 
+sudo init 0
+
+Reserved Ports:
+22        SSH 
+21  & 23  FTP 
+25        SMTP 
+80        HTTP 
+443       HTTPS
+8080      tomcat 
+3306      mySQL 
+
+
+### ✅ Beginner Linux Questions and Answers
+
+**1. What is the difference between Linux and Unix?**
+
+* **Linux** is an open-source, Unix-like operating system. **Unix** is a proprietary OS originally developed in the 1970s. Linux is more modern, widely adopted, and freely distributed.
+
+**2. What does the `chmod` command do? Give examples.**
+
+* Changes file permissions.
+* Example: `chmod 755 script.sh` gives read/write/execute to owner, read/execute to group and others.
+
+**3. What’s the difference between `>` and `>>` in shell redirection?**
+
+* `>` overwrites a file.
+* `>>` appends to a file.
+
+**4. How do you check the disk space usage on a Linux system?**
+
+* `df -h` (human-readable)
+
+**5. How do you find the IP address of a Linux machine?**
+
+* `ip a` or `ifconfig`
+
+**6. What is the purpose of the `/etc/passwd` and `/etc/shadow` files?**
+
+* `/etc/passwd`: Stores user account info.
+* `/etc/shadow`: Stores encrypted passwords.
+
+**7. How do you view running processes?**
+
+* `ps aux` or `top`
+
+**8. What are file descriptors?**
+
+* Integers that represent open files: stdin (0), stdout (1), stderr (2).
+
+**9. How can you find which process is using a specific port?**
+
+* `lsof -i :80` or `netstat -tulnp | grep 80`
+
+**10. How do you create a symbolic link vs a hard link?**
+
+* Symbolic: `ln -s target link`
+* Hard: `ln target link`
+
+---
+
+### 🟡 Intermediate Linux Questions and Answers
+
+**1. Difference between `cron` and `at`?**
+
+* `cron`: Schedules recurring tasks.
+* `at`: Schedules one-time tasks.
+
+**2. Change a user’s default shell?**
+
+* `chsh -s /bin/bash username`
+
+**3. What is `umask`?**
+
+* Sets default permission mask for new files.
+* Example: `umask 022` ➔ files get `755` perms.
+
+**4. List all open files?**
+
+* `lsof`
+
+**5. Purpose of `nice` and `renice`?**
+
+* Adjust process priority.
+* `nice -n 10 command` or `renice -n 5 -p PID`
+
+**6. Add user with specific home and shell?**
+
+* `useradd -m -d /custom/home -s /bin/zsh username`
+
+**7. Difference between `kill`, `killall`, and `pkill`?**
+
+* `kill`: by PID
+* `killall`: by process name
+* `pkill`: pattern-based match
+
+**8. Difference: `/bin`, `/sbin`, `/usr/bin`, `/usr/sbin`?**
+
+* `/bin`: essential binaries for all users
+* `/sbin`: system binaries (root only)
+* `/usr/bin`: user apps
+* `/usr/sbin`: admin tools not needed for boot
+
+**9. Monitor memory and CPU usage in real time?**
+
+* `top`, `htop`, or `vmstat`
+
+**10. Troubleshoot `CrashLoopBackOff`?**
+
+* Check logs: `kubectl logs pod --previous`
+* Describe: `kubectl describe pod`
+* Check for command failure, misconfig, health probes
+
+---
+
+### 🔴 Advanced / DevOps-Level Linux Questions and Answers
+
+**1. Explain Linux boot process.**
+
+1. BIOS
+2. Bootloader (GRUB)
+3. Kernel loads
+4. `init`/`systemd` starts services
+
+**2. What are `cgroups` and `namespaces`?**
+
+* Kernel features for container isolation.
+* `cgroups`: resource limits
+* `namespaces`: isolation (PID, net, mounts, etc.)
+
+**3. How does `systemd` work? How to create a service?**
+
+* System/service manager
+* Create unit: `/etc/systemd/system/myapp.service`
+* Enable/start: `systemctl enable --now myapp`
+
+**4. Difference between hard and soft NFS mount?**
+
+* **Hard**: retries forever if server is unresponsive
+* **Soft**: returns error if server unresponsive (less safe)
+
+**5. Secure SSH access?**
+
+* Disable root login, use key-based auth, restrict IPs, enable fail2ban
+
+**6. Trace a system call?**
+
+* `strace ./myapp`
+
+**7. `iptables` vs `firewalld` vs `nftables`?**
+
+* `iptables`: low-level, older
+* `firewalld`: higher-level abstraction
+* `nftables`: modern replacement for iptables
+
+**8. SELinux/AppArmor?**
+
+* Kernel security modules to enforce access controls
+
+**9. `/proc`, `/sys`, `/dev`?**
+
+* `/proc`: virtual file system for process info
+* `/sys`: kernel object interface
+* `/dev`: device files
+
+**10. Log rotation?**
+
+* Configured via `/etc/logrotate.conf` or `/etc/logrotate.d/`
+* Run with `logrotate -f config`
+
+---
+
+### 💡 Practical Scripting Questions
+
+**1. Monitor disk usage and alert if >90%**
+
+```bash
+#!/bin/bash
+df -h | awk 'NR>1 {if($5+0 > 90) print $0}'
+```
+
+**2. Case-insensitive comparison in Bash**
+
+```bash
+str1="Yes"
+str2="yes"
+if [[ "${str1,,}" == "${str2,,}" ]]; then
+  echo "Match"
+fi
+```
+
+**3. Cron job to back up `/var/log` daily**
+
+```cron
+0 2 * * * tar -czf /backup/logs_$(date +\%F).tar.gz /var/log
+```
+
+**4. Delete files older than 30 days**
+
+```bash
+find /path/to/dir -type f -mtime +30 -exec rm -f {} \;
+```
